@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B1120;
+  --foreground: #F1F5F9;
+  --gold: #C8A951;
+  --gold-light: #E8D494;
+  --gold-dark: #A68B3F;
+  --navy: #1B2A4A;
+  --navy-light: #2A3B5C;
+  --navy-dark: #0F172A;
+  --amber: #F59E0B;
+  --muted: #94A3B8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-navy-dark: var(--navy-dark);
+  --color-amber: var(--amber);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(200, 169, 81, 0.3);
+  color: #F1F5F9;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0B1120; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C8A951; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(200, 169, 81, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(200, 169, 81, 0.5); }
+}
+
+.glow-gold { box-shadow: 0 0 20px rgba(200, 169, 81, 0.3); }
+
+.gradient-gold-text {
+  background: linear-gradient(135deg, #E8D494, #C8A951, #A68B3F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-premium {
+  background: linear-gradient(145deg, rgba(27, 42, 74, 0.9), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(200, 169, 81, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.card-premium:hover {
+  border-color: rgba(200, 169, 81, 0.5);
+  box-shadow: 0 0 30px rgba(200, 169, 81, 0.15);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(200, 169, 81, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 81, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.glass-nav {
+  background: rgba(11, 17, 32, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200, 169, 81, 0.1);
 }
