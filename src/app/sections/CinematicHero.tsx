@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Volume2, VolumeX, ChevronDown } from "lucide-react";
+import GlitchText from "../components/GlitchText";
 
 export default function CinematicHero() {
   const sectionRef = useRef<HTMLDivElement>(null);

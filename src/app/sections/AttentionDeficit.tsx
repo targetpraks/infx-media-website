@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Gamepad2, Fingerprint, Zap, Brain, Trophy, Tv } from "lucide-react";
+import EsportsArena from "../components/EsportsArena";
+import GlitchText from "../components/GlitchText";
 
 const stats = [
   { value: "47%", label: "Gen Z skip all ads", icon: Zap },
@@ -43,7 +45,13 @@ export default function AttentionDeficit() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="headline-section mb-6 max-w-5xl"
         >
-          Esports. iPad. 8 Seconds.
+          <GlitchText
+            text="Esports. iPad. 8 Seconds."
+            as="span"
+            triggerOnView={isInView}
+            intensity="high"
+            color="cyan"
+          />
           <br />
           <span className="gradient-cyan-text">The Generation That Skipped Everything.</span>
         </motion.h2>
@@ -58,6 +66,11 @@ export default function AttentionDeficit() {
           Their brains are wired for instant gratification, fast context switching, and zero friction.
           They are not just ignoring your media — <span className="text-cyan font-semibold">they don't even notice it.</span>
         </motion.p>
+
+        {/* Esports Arena Visualizer */}
+        <EsportsArena />
+
+        <div className="mb-8" />
 
         {/* Stats Row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">

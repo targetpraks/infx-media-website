@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { XCircle, TrendingDown, Eye, Radio, Newspaper, Smartphone, Play } from "lucide-react";
+import MediaDeathCanvas from "../components/MediaDeathCanvas";
+import GlitchText from "../components/GlitchText";
 
 const deadMedia = [
   {
@@ -76,7 +78,13 @@ export default function DeathOfMedia() {
           transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="headline-section mb-8 max-w-4xl"
         >
-          Low Engagement Is
+          <GlitchText
+            text="Low Engagement Is"
+            as="span"
+            triggerOnView={isInView}
+            intensity="medium"
+            color="blood"
+          />
           <br />
           <span className="gradient-blood-text">Not a Bug. It's the Terminal State.</span>
         </motion.h2>
@@ -94,8 +102,10 @@ export default function DeathOfMedia() {
           The attention economy doesn't reward presence — it punishes absence of engagement.
         </motion.p>
 
-        {/* Dead Media Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        {/* Dead Media Grid + Visualizer */}
+        <MediaDeathCanvas />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16 mt-12">
           {deadMedia.map((item, i) => {
             const Icon = item.icon;
             return (
