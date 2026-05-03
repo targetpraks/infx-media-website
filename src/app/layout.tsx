@@ -15,16 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "INFX Solutions | Africa's First QSR Store TakeOver Platform",
-  description: "Your brand doesn't advertise near customers. It becomes the store they walk into. 6 exclusive TakeOver slots per year with category exclusivity.",
+  title: "INFX TakeOver — The World's First Retail Media Revelation",
+  description: "INFX Solutions. We don't advertise. We hijack retail space and convert it into immersive brand worlds overnight. For the esports generation. For the brands that understand attention.",
+  openGraph: {
+    title: "INFX TakeOver — The World's First Retail Media Revelation",
+    description: "We don't advertise. We hijack retail space and convert it into immersive brand worlds overnight.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="min-h-screen flex flex-col">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      </head>
+      <body className="min-h-screen flex flex-col bg-void text-text-primary">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 bg-void">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

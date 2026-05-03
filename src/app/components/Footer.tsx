@@ -1,83 +1,56 @@
-import Link from 'next/link';
-import { Mail, Phone, MapPin } from 'lucide-react';
+`use client`;
+
+import { Zap } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-dark border-t border-gold/10">
+    <footer className="border-t border-white/5 bg-void">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-lg bg-gold flex items-center justify-center">
-                <span className="text-navy-dark font-bold text-sm">INFX</span>
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 rounded-sm bg-lime flex items-center justify-center">
+                <span className="text-void font-extrabold text-xs">INFX</span>
               </div>
-              <span className="text-foreground font-semibold">INFX <span className="text-gold">Solutions</span>
-</span>
+              <span className="text-text-primary font-bold text-sm">
+                INFX <span className="text-lime">TakeOver</span>
+              </span>
             </div>
-            <p className="text-muted text-sm leading-relaxed">Africa&aposs;s first QSR store takeover platform. One brand per space. One space per brand.</p>
-            <div className="flex items-center gap-4 mt-5">
-              {<span className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-muted">in</span>}
-              {<span className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-muted">X</span>}
-              {<span className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-muted">IG</span>}
-            </div>
+            <p className="text-text-tertiary text-sm leading-relaxed max-w-xs">
+              We don't advertise. We hijack physical retail and convert it into immersive brand worlds overnight.
+            </p>
           </div>
 
+          {/* Links */}
           <div>
-            <p className="text-gold text-xs font-semibold uppercase tracking-wider mb-5">Explore</p>
+            <p className="eyebrow mb-5">Navigation</p>
             <ul className="space-y-3">
-              <li>
-<Link href="/how-it-works/" className="text-muted text-sm hover:text-foreground transition" prefetch={false}>How It Works</Link>
-</li>
-              <li>
-<Link href="/gallery/" className="text-muted text-sm hover:text-foreground transition" prefetch={false}>Gallery</Link>
-</li>
-              <li>
-<Link href="/data-advantage/" className="text-muted text-sm hover:text-foreground transition" prefetch={false}>Data Advantage</Link>
-</li>
+              <li><a href="#revelation" className="text-text-tertiary text-sm hover:text-lime transition">The Revelation</a></li>
+              <li><a href="#attention-deficit" className="text-text-tertiary text-sm hover:text-lime transition">The Generation</a></li>
+              <li><a href="#overnight" className="text-text-tertiary text-sm hover:text-lime transition">The TakeOver</a></li>
+              <li><a href="#activation" className="text-text-tertiary text-sm hover:text-lime transition">The Activation</a></li>
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <p className="text-gold text-xs font-semibold uppercase tracking-wider mb-5">Company</p>
+            <p className="eyebrow mb-5">Contact</p>
             <ul className="space-y-3">
-              <li>
-<Link href="/about/" className="text-muted text-sm hover:text-foreground transition" prefetch={false}>About INFX</Link>
-</li>
-              <li>
-<Link href="/faq/" className="text-muted text-sm hover:text-foreground transition" prefetch={false}>FAQ</Link>
-</li>
-              <li>
-<Link href="/agency/" className="text-muted text-sm hover:text-foreground transition" prefetch={false}>Agency Partners</Link>
-</li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-gold text-xs font-semibold uppercase tracking-wider mb-5">Contact</p>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-<Mail size={16} className="text-gold mt-0.5 shrink-0" />
-<span className="text-muted text-sm">leads@infxmedia.xyz</span>
-</li>
-              <li className="flex items-start gap-3">
-<Phone size={16} className="text-gold mt-0.5 shrink-0" />
-<span className="text-muted text-sm">+27 11 XXX XXXX</span>
-</li>
-              <li className="flex items-start gap-3">
-<MapPin size={16} className="text-gold mt-0.5 shrink-0" />
-<span className="text-muted text-sm">Bedfordview, Johannesburg, South Africa</span>
-</li>
+              <li className="text-text-tertiary text-sm">leads@infxmedia.xyz</li>
+              <li className="text-text-tertiary text-sm">Bedfordview, Johannesburg</li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted text-sm">&copy; {new Date().getFullYear()} INFX Solutions, an Infinity Brands company. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link href="/legal/" className="text-muted text-xs hover:text-foreground transition" prefetch={false}>Privacy Policy</Link>
-            <Link href="/legal/" className="text-muted text-xs hover:text-foreground transition" prefetch={false}>Terms</Link>
-            <Link href="/legal/" className="text-muted text-xs hover:text-foreground transition" prefetch={false}>POPIA</Link>
-          </div>
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-text-dim text-xs">
+            &copy; 2025 INFX Solutions &mdash; An Infinity Brands Company
+          </p>
+          <p className="text-text-dim text-xs flex items-center gap-2">
+            <Zap size={12} className="text-lime" />
+            Powered by the future.
+          </p>
         </div>
       </div>
     </footer>
