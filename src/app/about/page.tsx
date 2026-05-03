@@ -9,9 +9,9 @@ export default function AboutPage() {
       <section className="relative pt-28 pb-16">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <p className="text-gold text-sm font-semibold uppercase tracking-wider mb-3">About INFX Media</p>
+            <p className="text-gold text-sm font-semibold uppercase tracking-wider mb-3">About INFX Solutions</p>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Who We Are</h1>
-            <p className="text-muted text-lg max-w-2xl">INFX Media is the media arm of Infinity Brands (Pty) Ltd.</p>
+            <p className="text-muted text-lg max-w-2xl">INFX Solutions is the media arm of Infinity Brands (Pty) Ltd.</p>
           </motion.div>
         </div>
       </section>

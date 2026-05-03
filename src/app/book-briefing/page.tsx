@@ -136,7 +136,7 @@ export default function BookBriefingPage() {
 
             <div className="flex items-start gap-3 p-4 rounded-lg bg-white/[0.02] border border-white/5">
               <input name="consent" type="checkbox" id="popia" checked={formData.consent} onChange={handleChange} className="mt-1 w-4 h-4 accent-gold" />
-              <label htmlFor="popia" className="text-sm text-muted leading-relaxed">I agree to INFX Media processing my data for TakeOver briefing purposes in compliance with POPIA. I understand I can request deletion at any time via leads@infxmedia.xyz.</label>
+              <label htmlFor="popia" className="text-sm text-muted leading-relaxed">I agree to INFX Solutions processing my data for TakeOver briefing purposes in compliance with POPIA. I understand I can request deletion at any time via leads@infxmedia.xyz.</label>
             </div>
 
             <button type="submit" disabled={loading} className="w-full bg-gold text-navy-dark py-4 rounded-full font-semibold text-lg hover:bg-gold-light active:scale-[0.98] transition glow-gold disabled:opacity-50 inline-flex items-center justify-center gap-2">

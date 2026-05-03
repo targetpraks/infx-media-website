@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "INFX Media | Africa's First QSR Store TakeOver Platform",
+  title: "INFX Solutions | Africa's First QSR Store TakeOver Platform",
   description: "Your brand doesn't advertise near customers. It becomes the store they walk into. 6 exclusive TakeOver slots per year with category exclusivity.",
 };
 

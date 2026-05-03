@@ -11,7 +11,7 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-lg bg-gold flex items-center justify-center">
                 <span className="text-navy-dark font-bold text-sm">INFX</span>
               </div>
-              <span className="text-foreground font-semibold">INFX <span className="text-gold">Media</span>
+              <span className="text-foreground font-semibold">INFX <span className="text-gold">Solutions</span>
 </span>
             </div>
             <p className="text-muted text-sm leading-relaxed">Africa&aposs;s first QSR store takeover platform. One brand per space. One space per brand.</p>
@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted text-sm">&copy; {new Date().getFullYear()} INFX Media, an Infinity Brands company. All rights reserved.</p>
+          <p className="text-muted text-sm">&copy; {new Date().getFullYear()} INFX Solutions, an Infinity Brands company. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/legal/" className="text-muted text-xs hover:text-foreground transition" prefetch={false}>Privacy Policy</Link>
             <Link href="/legal/" className="text-muted text-xs hover:text-foreground transition" prefetch={false}>Terms</Link>

@@ -44,7 +44,7 @@ export default function Navbar() {
             <div className="w-9 h-9 rounded-lg bg-gold flex items-center justify-center group-hover:shadow-lg transition">
               <span className="text-navy-dark font-bold text-sm">INFX</span>
             </div>
-            <span className="text-foreground font-semibold text-lg tracking-tight">INFX <span className="text-gold">Media</span>
+            <span className="text-foreground font-semibold text-lg tracking-tight">INFX <span className="text-gold">Solutions</span>
 </span>
           </Link>
 

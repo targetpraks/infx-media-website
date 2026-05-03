@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Legal | INFX Media',
+  title: 'Legal | INFX Solutions',
   robots: { index: false, follow: false },
 };
 
@@ -13,7 +13,7 @@ export default function LegalPage() {
       <div className="space-y-12 text-sm text-muted leading-relaxed">
         <section>
           <h2 className="text-lg font-bold text-foreground mb-3">POPIA Compliance Statement</h2>
-          <p className="mb-4">INFX Media (a division of Infinity Brands (Pty) Ltd) is fully compliant with the Protection of Personal Information Act 4 of 2013 (POPIA). All data capture on this site is done with explicit user consent.</p>
+          <p className="mb-4">INFX Solutions (a division of Infinity Brands (Pty) Ltd) is fully compliant with the Protection of Personal Information Act 4 of 2013 (POPIA). All data capture on this site is done with explicit user consent.</p>
           <ul className="list-disc list-inside space-y-1">
             <li>Data is stored and processed within South Africa.</li>
             <li>Users have the right to request access, correction, and deletion of their data.</li>
@@ -39,7 +39,7 @@ export default function LegalPage() {
 
         <section>
           <h2 className="text-lg font-bold text-foreground mb-3">Contact</h2>
-          <p>INFX Media, Infinity Brands (Pty) Ltd</p>
+          <p>INFX Solutions, Infinity Brands (Pty) Ltd</p>
           <p>Email: leads@infxmedia.xyz</p>
           <p>Address: Bedfordview, Johannesburg, South Africa</p>
         </section>
