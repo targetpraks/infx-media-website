@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 
 interface Node {
   x: number; y: number; vx: number; vy: number;
@@ -23,6 +23,7 @@ export default function NeuralNetworkBackground() {
   const connectionsRef = useRef<Connection[]>([]);
   const packetsRef = useRef<Packet[]>([]);
   const frameRef = useRef(0);
+  const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const init = useCallback((w: number, h: number) => {
     const nodeCount = Math.min(120, Math.floor((w * h) / 15000));
@@ -74,7 +75,9 @@ export default function NeuralNetworkBackground() {
     let h = window.innerHeight;
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const resize = () => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const doResize = () => {
       w = window.innerWidth; h = window.innerHeight;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = w * dpr; canvas.height = h * dpr;
@@ -83,8 +86,22 @@ export default function NeuralNetworkBackground() {
       init(w, h);
     };
 
-    resize();
-    window.addEventListener("resize", resize);
+    const debouncedResize = () => {
+      if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
+      resizeTimeoutRef.current = setTimeout(doResize, 150);
+    };
+
+    doResize();
+    window.addEventListener("resize", debouncedResize);
+
+    if (reducedMotion) {
+      return () => {
+        window.removeEventListener("resize", debouncedResize);
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseleave", onMouseLeave);
+        window.removeEventListener("touchmove", onTouchMove);
+      };
+    }
 
     const onMouseMove = (e: MouseEvent) => { mouseRef.current = { x: e.clientX, y: e.clientY, active: true }; };
     const onMouseLeave = () => { mouseRef.current.active = false; };
@@ -205,13 +222,13 @@ export default function NeuralNetworkBackground() {
     draw();
 
     return () => {
-      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", debouncedResize);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseleave", onMouseLeave);
       window.removeEventListener("touchmove", onTouchMove);
-      cancelAnimationFrame(animationId);
     };
   }, [init]);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0, opacity: 0.6 }} />;
+  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0, opacity: 0.6 }} aria-hidden="true" />;
 }

@@ -8,11 +8,10 @@ import RevelationSection from "./sections/RevelationSection";
 import OvernightTakeOver from "./sections/OvernightTakeOver";
 import ActivationEngine from "./sections/ActivationEngine";
 import CTAContact from "./sections/CTAContact";
-import VideoSection from "./sections/VideoSection";
 import YouTubeEmbed from "./components/YouTubeEmbed";
 import BrandInfectionSimulator from "./components/BrandInfectionSimulator";
+import SectionDivider from "./components/SectionDivider";
 
-// Lazy load heavy backgrounds
 const NeuralNetworkBackground = dynamic(() => import("./components/NeuralNetworkBackground"), {
   ssr: false,
   loading: () => null,
@@ -23,13 +22,12 @@ export default function HomePage() {
     <>
       <NeuralNetworkBackground />
 
-      {/* 1. THE HOOK — Full-screen cinematic video hero */}
       <CinematicHero />
+      <SectionDivider variant="lime" />
 
-      {/* 2. THE REVELATION — What INFX does (lime green, the concept) */}
       <RevelationSection />
+      <SectionDivider variant="lime" />
 
-      {/* 3. Cinematic Video Divider — Brand world concept — REAL YOUTUBE */}
       <YouTubeEmbed
         videoId="dQw4w9WgXcQ"
         title="INFX Brand World Concept"
@@ -38,14 +36,14 @@ export default function HomePage() {
         overlaySubtitle="Watch the revelation unfold"
         sectionId="video-brand-world"
       />
+      <SectionDivider variant="blood" />
 
-      {/* 4. DEATH OF MEDIA — Why old media is dying (blood red) */}
       <DeathOfMedia />
+      <SectionDivider variant="cyan" />
 
-      {/* 5. ATTENTION DEFICIT — Gen Z / esports generation (cyan digital) */}
       <AttentionDeficit />
+      <SectionDivider variant="cyan" />
 
-      {/* 6. Cinematic Video Divider — Esports / gaming energy — REAL YOUTUBE */}
       <YouTubeEmbed
         videoId="dQw4w9WgXcQ"
         title="Physical Captive Attention"
@@ -54,21 +52,21 @@ export default function HomePage() {
         overlaySubtitle="See how we own the moment"
         sectionId="video-attention"
       />
+      <SectionDivider variant="lime" />
 
-      {/* 7. OVERNIGHT TAKEOVER — Multi-location conversion timeline */}
       <OvernightTakeOver />
+      <SectionDivider variant="lime" />
 
-      {/* 8. BRAND INFECTION SIMULATOR — Interactive: click to convert */}
       <section className="section-cinematic relative">
         <div className="section-cinematic-inner">
           <BrandInfectionSimulator />
         </div>
       </section>
+      <SectionDivider variant="lime" />
 
-      {/* 9. ACTIVATION ENGINE — QSR activation */}
       <ActivationEngine />
+      <SectionDivider variant="lime" />
 
-      {/* 10. FINAL CTA — No pricing, no slots, just contact */}
       <CTAContact />
     </>
   );

@@ -13,6 +13,8 @@ const steps = [
   { time: "08:00", title: "Doors Open", detail: "Customers walk in. Your brand is the air they breathe." },
 ];
 
+const cities = ["Johannesburg", "Pretoria", "Centurion", "Sandton"];
+
 export default function OvernightTakeOver() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -41,7 +43,7 @@ export default function OvernightTakeOver() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="headline-section mb-6 max-w-5xl"
         >
           From Empty Walls to
@@ -52,14 +54,14 @@ export default function OvernightTakeOver() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6 }}
-          className="body-large max-w-2xl mb-16"
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="body-lg max-w-2xl mb-16"
         >
-          Multi-location deployment. Instant. Efficient. The conversion happens overnight while the world sleeps.
-          Multiple stores, same brand, same experience — all flipped by sunrise. <span className="text-lime font-semibold">Your brand is the space they enter.</span>
+          Multi-location deployment. Instant. Efficient. The conversion happens overnight while the
+          world sleeps. Multiple stores, same brand, same experience &mdash; all flipped by sunrise.{" "}
+          <span className="text-lime font-semibold">Your brand is the space they enter.</span>
         </motion.p>
 
-        {/* Timeline */}
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-lime/10" />
 
@@ -70,19 +72,17 @@ export default function OvernightTakeOver() {
                 key={step.time}
                 initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.1 }}
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className={`relative flex items-start gap-8 mb-12 ${
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Time dot */}
                 <div className="absolute left-4 md:left-1/2 top-2 -translate-x-1/2 z-10">
-                  <div className="w-3 h-3 rounded-full bg-lime shadow-[0_0_12px_rgba(204,255,0,0.5)]" />
+                  <div className="w-3 h-3 rounded-full bg-lime shadow-[0_0_14px_rgba(204,255,0,0.6)]" />
                 </div>
 
-                {/* Card */}
                 <div className={`ml-10 md:ml-0 md:w-[calc(50%-2rem)] ${isLeft ? "md:pr-0" : "md:pl-0"}`}>
-                  <div className="card-dark p-6 rounded-xl group hover:border-lime/20">
+                  <div className="card-dark p-6 border-glow-lime">
                     <div className="flex items-center gap-3 mb-2">
                       <Clock size={14} className="text-lime" />
                       <span className="text-lime text-sm font-bold font-mono">{step.time}</span>
@@ -96,17 +96,16 @@ export default function OvernightTakeOver() {
           })}
         </div>
 
-        {/* Locations badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1.6 }}
-          className="flex flex-wrap justify-center gap-4 mt-8"
+          transition={{ delay: 1.6, duration: 0.5 }}
+          className="flex flex-wrap justify-center gap-3 mt-12"
         >
-          {["Johannesburg", "Pretoria", "Centurion", "Sandton"].map((city) => (
+          {cities.map((city) => (
             <div
               key={city}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5 text-text-secondary text-xs"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5 text-text-secondary text-xs hover:border-lime/30 hover:text-lime transition-all duration-300"
             >
               <MapPin size={12} className="text-lime" />
               {city}

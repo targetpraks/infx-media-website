@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { XCircle, TrendingDown, Eye, Radio, Newspaper, Smartphone, Play } from "lucide-react";
-import MediaDeathCanvas from "../components/MediaDeathCanvas";
+import { XCircle, Eye, Radio, Newspaper, Smartphone, Play } from "lucide-react";
+import AnimatedCounter from "../components/AnimatedCounter";
 import GlitchText from "../components/GlitchText";
 
 const deadMedia = [
@@ -33,16 +33,21 @@ const deadMedia = [
   },
 ];
 
+const cardStagger = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 export default function DeathOfMedia() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="death-of-media"
-      className="relative section-cinematic"
-    >
-      {/* Blood-tinted background */}
+    <section id="death-of-media" className="relative section-cinematic">
       <div
         className="absolute inset-0"
         style={{
@@ -52,7 +57,6 @@ export default function DeathOfMedia() {
         }}
       />
 
-      {/* Floating dead media particles */}
       <div className="absolute inset-0 pointer-events-none z-[1]"
         style={{
           backgroundImage: `radial-gradient(circle at 20% 30%, rgba(255, 0, 51, 0.03) 0%, transparent 30%),
@@ -61,7 +65,6 @@ export default function DeathOfMedia() {
       />
 
       <div ref={ref} className="section-cinematic-inner relative z-[2]">
-        {/* Section Eyebrow */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -71,7 +74,6 @@ export default function DeathOfMedia() {
           The death of traditional media
         </motion.p>
 
-        {/* Main Headline */}
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -86,26 +88,23 @@ export default function DeathOfMedia() {
             color="blood"
           />
           <br />
-          <span className="gradient-blood-text">Not a Bug. It's the Terminal State.</span>
+          <span className="gradient-blood-text">Not a Bug. It&apos;s the Terminal State.</span>
         </motion.h2>
 
-        {/* Narrative paragraph */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="body-large max-w-2xl mb-16 text-text-secondary"
+          className="body-lg max-w-2xl mb-16"
         >
-          Millions are being spent every second on places <span className="text-blood font-semibold">where no one is looking</span>. 
-          The audience has left the building. They're on YouTube, in Discord servers, watching Twitch streams. 
-          They're not looking at your billboard. They're not waiting through your ad. 
-          The attention economy doesn't reward presence — it punishes absence of engagement.
+          Millions are being spent every second on places{" "}
+          <span className="text-blood font-semibold">where no one is looking</span>. The audience has
+          left the building. They&apos;re on YouTube, in Discord servers, watching Twitch streams.
+          They&apos;re not looking at your billboard. They&apos;re not waiting through your ad. The
+          attention economy doesn&apos;t reward presence &mdash; it punishes absence of engagement.
         </motion.p>
 
-        {/* Dead Media Grid + Visualizer */}
-        <MediaDeathCanvas />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {deadMedia.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -113,51 +112,47 @@ export default function DeathOfMedia() {
                 key={item.name}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.1, duration: 0.5 }}
-                className="card-dark p-6 rounded-xl group hover:!border-blood/20 transition-all duration-500"
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="card-dark p-6 group border-glow-blood"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-blood/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-blood/10 flex items-center justify-center group-hover:bg-blood/20 transition-colors duration-300">
                     <Icon size={20} className="text-blood" />
                   </div>
-                  <XCircle size={16} className="text-text-dim group-hover:text-blood transition" />
+                  <XCircle size={16} className="text-text-dim group-hover:text-blood transition-colors duration-300" />
                 </div>
-                <div className="stat-number gradient-blood-text mb-2">
-                  {item.stat}
-                </div>
-                <p className="text-sm font-semibold text-text-primary mb-1">
-                  {item.name}
-                </p>
-                <p className="text-xs text-text-tertiary">
-                  {item.sub}
-                </p>
+                <AnimatedCounter
+                  end={item.stat}
+                  className="stat-number gradient-blood-text mb-2"
+                  delay={0.8 + i * 0.1}
+                />
+                <p className="text-sm font-semibold text-text-primary mb-1">{item.name}</p>
+                <p className="text-xs text-text-tertiary">{item.sub}</p>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Bottom narrative bar */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 1.4 }}
-          className="card-glass rounded-2xl p-8 border-glow-lime"
+          className="card-glass p-8 border-glow-lime"
         >
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="max-w-xl">
               <p className="text-lg font-medium text-text-primary mb-2">
                 The real estate still exists.
               </p>
-              <p className="text-text-secondary text-sm">
-                Physical spaces. Where humans <span className="text-lime font-semibold">pay money</span> to stand in line. 
-                Where they're trapped for 15 minutes with nowhere to scroll. Where every surface 
-                can be converted into <span className="text-lime font-semibold">your story</span> — overnight.
+              <p className="body-sm">
+                Physical spaces. Where humans{" "}
+                <span className="text-lime font-semibold">pay money</span> to stand in line. Where
+                they&apos;re trapped for 15 minutes with nowhere to scroll. Where every surface can be
+                converted into <span className="text-lime font-semibold">your story</span> &mdash;
+                overnight.
               </p>
             </div>
-            <a
-              href="#attention-deficit"
-              className="btn-cinematic whitespace-nowrap"
-            >
+            <a href="#attention-deficit" className="btn-cinematic">
               <Play size={16} />
               Meet The Generation
             </a>

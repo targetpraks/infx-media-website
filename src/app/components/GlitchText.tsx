@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
-const GLITCH_CHARS = "░▒▓█▌▐▀▄▐▙▖▗▘▙▛▜▝▞▟░`¬!'^#+\"~|*.,:;-_<>()[]{}";
+const GLITCH_CHARS = "\u2591\u2592\u2593\u2588\u258C\u2590\u2580\u2584\u2596\u2597\u2598\u2599\u259B\u259C\u259D\u259E\u259F`\u00AC!'^#+\"~|*.,:;-_<>()[]{}";
 
 interface GlitchTextProps {
   text: string;
@@ -12,6 +12,14 @@ interface GlitchTextProps {
   intensity?: "low" | "medium" | "high";
   color?: "lime" | "blood" | "cyan" | "white";
 }
+
+const INTENSITY_MAP = { low: 5, medium: 10, high: 20 };
+const COLOR_MAP = {
+  lime: "#CCFF00",
+  blood: "#FF0033",
+  cyan: "#00E5CC",
+  white: "#F5F5F5",
+};
 
 export default function GlitchText({
   text,
@@ -24,21 +32,47 @@ export default function GlitchText({
   const [displayText, setDisplayText] = useState(text);
   const [isGlitching, setIsGlitching] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const colorMap = {
-    lime: "#CCFF00",
-    blood: "#FF0033",
-    cyan: "#00E5CC",
-    white: "#F5F5F5",
-  };
+  const runGlitch = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
 
-  const iterationsMap = { low: 5, medium: 10, high: 20 };
+    setIsGlitching(true);
+    const iterations = INTENSITY_MAP[intensity];
+    let step = 0;
+    const totalLength = text.length;
+
+    intervalRef.current = setInterval(() => {
+      setDisplayText(
+        text
+          .split("")
+          .map((char, i) => {
+            if (char === " " || char === "\n") return char;
+            if (i < step) return text[i];
+            return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+          })
+          .join("")
+      );
+      step += totalLength / iterations + 0.5;
+
+      if (step >= totalLength) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        setDisplayText(text);
+        setIsGlitching(false);
+      }
+    }, 30);
+  }, [text, intensity]);
 
   useEffect(() => {
     if (!triggerOnView) {
       runGlitch();
-      return;
+      return () => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
     }
+
+    const el = ref.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -50,47 +84,28 @@ export default function GlitchText({
       { threshold: 0.3 }
     );
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [text, triggerOnView]);
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [runGlitch, triggerOnView]);
 
-  const runGlitch = () => {
-    setIsGlitching(true);
-    const iterations = iterationsMap[intensity];
-    let step = 0;
-
-    const interval = setInterval(() => {
-      setDisplayText(
-        text
-          .split("")
-          .map((char, i) => {
-            if (char === " " || char === "\n") return char;
-            if (i < step) return text[i];
-            return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
-          })
-          .join("")
-      );
-      step += text.length / iterations + 0.5;
-
-      if (step >= text.length) {
-        clearInterval(interval);
-        setDisplayText(text);
-        setIsGlitching(false);
-      }
-    }, 30);
-  };
+  const accentColor = COLOR_MAP[color];
 
   return (
     <Tag
       ref={ref as any}
       className={`${className} ${isGlitching ? "animate-pulse" : ""}`}
-      style={{
-        color: isGlitching ? colorMap[color] : undefined,
-        textShadow: isGlitching
-          ? `2px 0 ${colorMap[color]}, -2px 0 ${colorMap[color]}40`
-          : undefined,
-        fontFamily: isGlitching ? 'var(--font-geist-mono), monospace' : undefined,
-      }}
+      style={
+        isGlitching
+          ? {
+              color: accentColor,
+              textShadow: `2px 0 ${accentColor}, -2px 0 ${accentColor}40`,
+              fontFamily: "var(--font-geist-mono), monospace",
+            }
+          : undefined
+      }
     >
       {displayText}
     </Tag>

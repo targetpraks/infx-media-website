@@ -30,9 +30,10 @@ export default function MediaDeathCanvas() {
     if (!container) return;
 
     let animId: number;
+    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const resize = () => {
+    const doResize = () => {
       const w = container.offsetWidth;
       const h = 400;
       canvas.width = w * dpr;
@@ -42,7 +43,13 @@ export default function MediaDeathCanvas() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    resize();
+    const debouncedResize = () => {
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(doResize, 150);
+    };
+
+    window.addEventListener("resize", debouncedResize);
+    doResize();
 
     const w = canvas.offsetWidth || container.offsetWidth;
     const h = 400;
@@ -198,7 +205,10 @@ export default function MediaDeathCanvas() {
 
     draw();
 
-    return () => cancelAnimationFrame(animId);
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", debouncedResize);
+    };
   }, [isInView]);
 
   return (
