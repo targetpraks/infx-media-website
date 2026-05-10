@@ -7,7 +7,7 @@ import { Flame, ShoppingBag, Coffee, PartyPopper, ArrowRight } from "lucide-reac
 const activations = [
   {
     icon: ShoppingBag,
-    title: "QR Drops &amp; Freebies",
+    title: "QR Drops & Freebies",
     desc: "Every scan unlocks a reward. Every reward deepens the bond. The cup is the entry point. The portal is the rabbit hole.",
   },
   {

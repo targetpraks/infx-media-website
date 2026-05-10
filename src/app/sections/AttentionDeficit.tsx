@@ -9,7 +9,7 @@ import GlitchText from "../components/GlitchText";
 const stats = [
   { value: "47%", label: "Gen Z skip all ads", icon: Zap },
   { value: "8.2s", label: "Average attention span", icon: Brain },
-  { value: "67%", label: "Twitch &gt; TV for under-24s", icon: Tv },
+  { value: "67%", label: "Twitch > TV for under-24s", icon: Tv },
   { value: "94%", label: "Skip pre-rolls, always", icon: Trophy },
 ];
 
@@ -122,7 +122,7 @@ export default function AttentionDeficit() {
             <div className="w-12 h-12 rounded-lg bg-lime/10 flex items-center justify-center mb-6">
               <Fingerprint size={24} className="text-lime" />
             </div>
-            <h3 className="text-lg font-bold text-text-primary mb-3">New Kids in Career</h3>
+            <h3 className="text-lg font-bold text-text-primary mb-3">The Next Wave</h3>
             <p className="body-sm">
               They&apos;re the ones building the next unicorn on a laptop in a shared workspace.
               They&apos;re designing brands, coding apps, starting agencies. They need tools, not ads.

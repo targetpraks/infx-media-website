@@ -8,7 +8,7 @@ import RevelationSection from "./sections/RevelationSection";
 import OvernightTakeOver from "./sections/OvernightTakeOver";
 import ActivationEngine from "./sections/ActivationEngine";
 import CTAContact from "./sections/CTAContact";
-import YouTubeEmbed from "./components/YouTubeEmbed";
+import CinematicVideo from "./components/CinematicVideo";
 import BrandInfectionSimulator from "./components/BrandInfectionSimulator";
 import SectionDivider from "./components/SectionDivider";
 
@@ -28,8 +28,8 @@ export default function HomePage() {
       <RevelationSection />
       <SectionDivider variant="lime" />
 
-      <YouTubeEmbed
-        videoId="dQw4w9WgXcQ"
+      <CinematicVideo
+        videoUrl="https://cdn.coverr.co/videos/coverr-bustling-city-intersection-at-night-2737/1080p.mp4"
         title="INFX Brand World Concept"
         subtitle="The Vision"
         overlayTitle="Your Brand Is Not an Ad. It's a World."
@@ -44,8 +44,8 @@ export default function HomePage() {
       <AttentionDeficit />
       <SectionDivider variant="cyan" />
 
-      <YouTubeEmbed
-        videoId="dQw4w9WgXcQ"
+      <CinematicVideo
+        videoUrl="https://cdn.coverr.co/videos/coverr-abstract-neon-lights-in-the-dark-3157/1080p.mp4"
         title="Physical Captive Attention"
         subtitle="The Movement"
         overlayTitle="We Do Not Ask for Attention. We Capture It in Real Life."

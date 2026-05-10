@@ -61,9 +61,9 @@ export default function CinematicHero() {
           playsInline
           onLoadedData={() => setVideoLoaded(true)}
           poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-        >
-          <source src="" type="video/mp4" />
-        </video>
+          src="https://cdn.coverr.co/videos/coverr-bustling-city-intersection-at-night-2737/1080p.mp4"
+          style={{ opacity: videoLoaded ? 1 : 0, transition: "opacity 1s ease" }}
+        />
         <div className="video-overlay-dark" />
       </motion.div>
 
