@@ -21,7 +21,7 @@ export default function ScrollProgress() {
       }
     `;
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    return () => { document.head.removeChild(style); };
   }, []);
 
   return (
