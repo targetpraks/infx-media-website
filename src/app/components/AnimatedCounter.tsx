@@ -26,11 +26,12 @@ function parseEnd(end: number | string) {
 }
 
 function getInitialDisplay(end: number | string, prefix: string, suffix: string) {
+  // Static export: show final value immediately so page is readable
+  // JS runtime will still animate from 0 visually
   const parsed = parseEnd(end);
   if (!parsed) return String(end);
   const decimals = parsed.numericEnd % 1 !== 0 ? 1 : 0;
-  const startVal = (0).toFixed(decimals);
-  return `${prefix}${startVal}${parsed.displaySuffix}${suffix}`;
+  return `${prefix}${parsed.numericEnd.toFixed(decimals)}${parsed.displaySuffix}${suffix}`;
 }
 
 function getFinalDisplay(end: number | string, prefix: string, suffix: string) {

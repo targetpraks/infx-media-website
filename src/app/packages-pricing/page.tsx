@@ -192,7 +192,7 @@ export default function PackagesPricingPage() {
                     onClick={() => setOpenTier(openTier === i ? null : i)}
                     className="w-full flex items-center justify-between text-left text-sm text-muted hover:text-foreground transition py-2 border-t border-white/5"
                   >
-                    <span className="font-medium">What&apos;s included</span>
+                    <span className="font-medium">What&apos;s included</span>{" "}
                     {openTier === i ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </button>
                   <motion.div

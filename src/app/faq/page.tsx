@@ -69,7 +69,7 @@ export default function FAQPage() {
             {faqs.map((faq, i) => (
               <div key={i} className="rounded-xl overflow-hidden card-premium">
                 <button onClick={() => setOpenIndex(openIndex === i ? null : i)} className="w-full flex items-start justify-between text-left p-5 md:px-6">
-                  <span className="font-medium text-sm md:text-base pr-4">{faq.q}</span>
+                  <span className="font-medium text-sm md:text-base pr-4">{faq.q}</span>{" "}
                   {openIndex === i ? <ChevronUp size={20} className="text-gold shrink-0" /> : <ChevronDown size={20} className="text-muted shrink-0" />}
                 </button>
                 <AnimatePresence>

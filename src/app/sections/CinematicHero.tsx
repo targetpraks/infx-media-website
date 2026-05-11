@@ -116,7 +116,7 @@ export default function CinematicHero() {
           className="headline-sub max-w-2xl mb-12"
         >
           We don&apos;t pay for attention. We{" "}
-          <span className="text-lime font-semibold">hijack</span> the space where attention already
+          <span className="text-lime font-semibold">hijack</span>{" "}the space where attention already
           lives. Every surface, every cup, every wall &mdash; converted overnight. Instant.
           Efficient. Unignorable.
         </motion.p>

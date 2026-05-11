@@ -146,10 +146,10 @@ export default function DeathOfMedia() {
               </p>
               <p className="body-sm">
                 Physical spaces. Where humans{" "}
-                <span className="text-lime font-semibold">pay money</span> to stand in line. Where
+                <span className="text-lime font-semibold">pay money</span>{" "}to stand in line. Where
                 they&apos;re trapped for 15 minutes with nowhere to scroll. Where every surface can be
-                converted into <span className="text-lime font-semibold">your story</span> &mdash;
-                overnight.
+                converted into{" "}
+                <span className="text-lime font-semibold">your story</span>{" "}&mdash; overnight.
               </p>
             </div>
             <a href="#attention-deficit" className="btn-cinematic">
