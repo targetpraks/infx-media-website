@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUp, Flame, Mail, MapPin, Zap } from "lucide-react";
+import { ArrowUp, Flame, Mail, MapPin, Zap, Send } from "lucide-react";
 
 const footerLinks = {
   sections: [
@@ -21,8 +21,14 @@ const trustPoints = [
   { value: "3x", label: "Brand recall vs digital", suffix: "" },
 ];
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY"; // Replace with real key before deployment
+
 export default function Footer() {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [softEmail, setSoftEmail] = useState("");
+  const [softStatus, setSoftStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [softError, setSoftError] = useState("");
 
   useEffect(() => {
     const handler = () => setShowBackToTop(window.scrollY > 600);
@@ -32,6 +38,36 @@ export default function Footer() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSoftSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!softEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(softEmail)) {
+      setSoftError("Please enter a valid email.");
+      setSoftStatus("error");
+      return;
+    }
+    setSoftError("");
+    setSoftStatus("loading");
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "INFX Media Kit Request",
+          from_name: "INFX Website",
+          email: softEmail,
+          message: "Soft CTA — user requested media kit / updates via footer.",
+        }),
+      });
+      if (!res.ok) throw new Error("Submission failed");
+      setSoftStatus("success");
+      setSoftEmail("");
+    } catch {
+      setSoftStatus("error");
+      setSoftError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -51,6 +87,42 @@ export default function Footer() {
               We don&apos;t advertise. We hijack physical retail and convert it into immersive brand
               worlds overnight. Multi-location, same night, zero compromise.
             </p>
+
+            {/* Soft CTA — Media Kit capture */}
+            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4 mb-6">
+              <p className="text-text-primary text-sm font-semibold mb-2">Download the Media Kit</p>
+              <p className="text-text-tertiary text-xs mb-3">Get pricing, specs, and case studies delivered to your inbox.</p>
+              <form onSubmit={handleSoftSubmit} className="flex items-center gap-2" noValidate>
+                <input
+                  type="email"
+                  placeholder="name@company.com"
+                  value={softEmail}
+                  onChange={(e) => { setSoftEmail(e.target.value); if (softError) { setSoftError(""); setSoftStatus("idle"); } }}
+                  className="flex-1 bg-white/[0.03] border border-white/10 rounded-lg px-3 py-2 text-sm text-foreground focus:border-lime/50 outline-none transition"
+                  aria-label="Email for media kit"
+                  aria-invalid={softStatus === "error"}
+                  aria-describedby="soft-cta-error"
+                />
+                <button
+                  type="submit"
+                  disabled={softStatus === "loading"}
+                  className="shrink-0 inline-flex items-center gap-1.5 bg-lime text-void px-3 py-2 rounded-lg text-xs font-semibold hover:bg-lime-bright transition disabled:opacity-50"
+                >
+                  {softStatus === "loading" ? (
+                    <span className="w-3 h-3 border-2 border-void/30 border-t-void rounded-full animate-spin" />
+                  ) : (
+                    <Send size={14} />
+                  )}
+                  Send
+                </button>
+              </form>
+              {softStatus === "error" && softError && (
+                <p id="soft-cta-error" className="mt-2 text-xs text-blood" role="alert">{softError}</p>
+              )}
+              {softStatus === "success" && (
+                <p className="mt-2 text-xs text-emerald-400" role="status">Media kit request sent — check your inbox.</p>
+              )}
+            </div>
 
             <div className="flex flex-wrap gap-4">
               {trustPoints.map((tp) => (
