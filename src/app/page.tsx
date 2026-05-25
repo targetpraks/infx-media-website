@@ -11,6 +11,7 @@ import CTAContact from "./sections/CTAContact";
 import CinematicVideo from "./components/CinematicVideo";
 import BrandInfectionSimulator from "./components/BrandInfectionSimulator";
 import SectionDivider from "./components/SectionDivider";
+import SocialProof from "./components/SocialProof";
 
 const NeuralNetworkBackground = dynamic(() => import("./components/NeuralNetworkBackground"), {
   ssr: false,
@@ -65,6 +66,9 @@ export default function HomePage() {
       <SectionDivider variant="lime" />
 
       <ActivationEngine />
+      <SectionDivider variant="lime" />
+
+      <SocialProof />
       <SectionDivider variant="lime" />
 
       <CTAContact />
