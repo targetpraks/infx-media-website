@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
+import { safeJsonLdStringify } from "../lib/safe-json-ld";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +68,29 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "INFX TakeOver",
+  alternateName: "INFX Solutions",
+  url: "https://infxmedia.xyz",
+  logo: "https://infxmedia.xyz/logo.png",
+  description:
+    "We don't advertise. We hijack retail space and convert it into immersive brand worlds overnight.",
+  email: "leads@infxmedia.xyz",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bedfordview",
+    addressRegion: "Johannesburg",
+    addressCountry: "ZA",
+  },
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Infinity Brands",
+  },
+  sameAs: ["https://infxmedia.xyz"],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -86,31 +111,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-        <script
+        <Script
+          id="json-ld-org"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "INFX TakeOver",
-              alternateName: "INFX Solutions",
-              url: "https://infxmedia.xyz",
-              logo: "https://infxmedia.xyz/logo.png",
-              description:
-                "We don't advertise. We hijack retail space and convert it into immersive brand worlds overnight.",
-              email: "leads@infxmedia.xyz",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Bedfordview",
-                addressRegion: "Johannesburg",
-                addressCountry: "ZA",
-              },
-              parentOrganization: {
-                "@type": "Organization",
-                name: "Infinity Brands",
-              },
-              sameAs: ["https://infxmedia.xyz"],
-            }),
+            __html: safeJsonLdStringify(jsonLd),
           }}
         />
       </head>
