@@ -101,7 +101,7 @@ export default function CinematicHero() {
         <motion.h1
           initial={reducedMotion ? {} : { opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-hero mb-8 max-w-5xl"
         >
           Your Brand

@@ -43,7 +43,7 @@ export default function OvernightTakeOver() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-section mb-6 max-w-5xl"
         >
           From Empty Walls to
@@ -72,7 +72,7 @@ export default function OvernightTakeOver() {
                 key={step.time}
                 initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
                 className={`relative flex items-start gap-8 mb-12 ${
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 }`}

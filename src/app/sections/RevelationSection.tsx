@@ -42,7 +42,7 @@ const stagger = {
   animate: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -73,7 +73,7 @@ export default function RevelationSection() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-section mb-6 max-w-5xl"
         >
           We Don&apos;t Advertise.
@@ -101,7 +101,7 @@ export default function RevelationSection() {
                 key={pillar.title}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
                 className={`card-dark p-8 group border-glow-lime ${
                   isHero ? "md:col-span-2 lg:col-span-2" : ""
                 }`}

@@ -41,7 +41,7 @@ export default function AttentionDeficit() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-section mb-6 max-w-5xl"
         >
           <GlitchText
@@ -75,7 +75,7 @@ export default function AttentionDeficit() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
                 className="card-dark p-6 group border-glow-cyan"
               >
                 <div className="w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center mb-4 group-hover:bg-cyan/20 transition-colors duration-300">
@@ -96,7 +96,7 @@ export default function AttentionDeficit() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 1.0, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="card-dark p-8 border-glow-cyan"
           >
             <div className="w-12 h-12 rounded-lg bg-cyan/10 flex items-center justify-center mb-6">
@@ -116,7 +116,7 @@ export default function AttentionDeficit() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 1.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 1.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
             className="card-dark p-8 border-glow-lime"
           >
             <div className="w-12 h-12 rounded-lg bg-lime/10 flex items-center justify-center mb-6">

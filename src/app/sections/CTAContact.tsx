@@ -55,7 +55,7 @@ export default function CTAContact() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-section mb-6"
         >
           Don&apos;t Wait For Permission.
@@ -76,7 +76,7 @@ export default function CTAContact() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.8, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
           className="flex flex-col items-center gap-5 mb-16"
         >
           <a
@@ -114,7 +114,7 @@ export default function CTAContact() {
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 1.0 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 1.0 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
                 className="card-dark p-7 text-left border-glow-lime"
               >
                 <div className="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4">

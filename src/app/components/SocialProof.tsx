@@ -33,7 +33,7 @@ export default function SocialProof() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
         >
           <p className="eyebrow mb-4">Trusted by</p>
           <h2 className="headline-section mb-6">
@@ -65,7 +65,7 @@ export default function SocialProof() {
                 show: {
                   opacity: 1,
                   scale: 1,
-                  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
                 },
               }}
               className="card-dark group flex flex-col items-center justify-center gap-3 py-8 px-4 hover:border-white/15 transition-colors"

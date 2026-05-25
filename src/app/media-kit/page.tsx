@@ -81,7 +81,7 @@ export default function MediaKitPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
             className="max-w-3xl"
           >
             <p className="eyebrow-lime mb-4">Press &amp; Investors</p>
@@ -133,7 +133,7 @@ export default function MediaKitPage() {
                   key={s.label}
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
                   }}
                   className="card-dark p-6 border-glow-lime text-center"
                 >
@@ -180,7 +180,7 @@ export default function MediaKitPage() {
                   key={svc.title}
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
                   }}
                   className="card-dark p-7 border-glow-lime hover:border-white/15 transition-colors"
                 >

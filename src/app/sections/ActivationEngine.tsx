@@ -54,7 +54,7 @@ export default function ActivationEngine() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-section mb-6 max-w-5xl"
         >
           Activation Through QSR.
@@ -81,7 +81,7 @@ export default function ActivationEngine() {
                 key={item.title}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
                 className="card-dark p-8 border-glow-lime"
               >
                 <div className="flex items-start gap-5">

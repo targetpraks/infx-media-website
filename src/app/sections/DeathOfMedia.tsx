@@ -38,7 +38,7 @@ const cardStagger = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -77,7 +77,7 @@ export default function DeathOfMedia() {
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
           className="headline-section mb-8 max-w-4xl"
         >
           <GlitchText
@@ -112,7 +112,7 @@ export default function DeathOfMedia() {
                 key={item.name}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
                 className="card-dark p-6 group border-glow-blood"
               >
                 <div className="flex items-start justify-between mb-4">
