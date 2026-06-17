@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, type ElementType } from "react";
 
 const GLITCH_CHARS = "\u2591\u2592\u2593\u2588\u258C\u2590\u2580\u2584\u2596\u2597\u2598\u2599\u259B\u259C\u259D\u259E\u259F`\u00AC!'^#+\"~|*.,:;-_<>()[]{}";
 
@@ -37,12 +37,16 @@ export default function GlitchText({
   const runGlitch = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
 
-    setIsGlitching(true);
     const iterations = INTENSITY_MAP[intensity];
-    let step = 0;
     const totalLength = text.length;
+    let step = 0;
+    let started = false;
 
     intervalRef.current = setInterval(() => {
+      if (!started) {
+        started = true;
+        setIsGlitching(true);
+      }
       setDisplayText(
         text
           .split("")
@@ -92,10 +96,11 @@ export default function GlitchText({
   }, [runGlitch, triggerOnView]);
 
   const accentColor = COLOR_MAP[color];
+  const Component = Tag as ElementType;
 
   return (
-    <Tag
-      ref={ref as any}
+    <Component
+      ref={ref}
       className={`${className} ${isGlitching ? "animate-pulse" : ""}`}
       style={
         isGlitching
@@ -108,6 +113,6 @@ export default function GlitchText({
       }
     >
       {displayText}
-    </Tag>
+    </Component>
   );
 }

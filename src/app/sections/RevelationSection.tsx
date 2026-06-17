@@ -37,15 +37,6 @@ const pillars = [
   },
 ];
 
-const stagger = {
-  initial: { opacity: 0, y: 40 },
-  animate: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.8 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
-
 export default function RevelationSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });

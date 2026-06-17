@@ -8,16 +8,16 @@ import { Check, ChevronDown, ChevronUp, Crown, MapPin, TrendingUp, AlertTriangle
 const tiers = [
   {
     name: 'City TakeOver',
-    stores: '5\u201310 Stores',
-    priceRange: 'R400,000 \u2013 R600,000',
+    stores: '5–10 Stores',
+    priceRange: 'R400,000 – R600,000',
     perSlot: 'per TakeOver (3-month window)',
     cpm: 'R0.80',
-    impressions: '500K\u2013750K',
+    impressions: '500K–750K',
     attention: '15-20 min avg',
     compare: 'Billboard = R180-350 CPM',
     multiplier: '225x cheaper per impression',
     features: [
-      '5\u201310 store TakeOver',
+      '5–10 store TakeOver',
       'Full store colourway transformation',
       'Co-branded packaging run',
       '1 co-branded menu item',
@@ -30,16 +30,16 @@ const tiers = [
   },
   {
     name: 'Region TakeOver',
-    stores: '10\u201325 Stores',
-    priceRange: 'R1,000,000 \u2013 R2,000,000',
+    stores: '10–25 Stores',
+    priceRange: 'R1,000,000 – R2,000,000',
     perSlot: 'per TakeOver (3-month window)',
     cpm: 'R0.53',
-    impressions: '1.5M\u20133.75M',
+    impressions: '1.5M–3.75M',
     attention: '15-20 min avg',
     compare: 'Radio campaign = R120-200 CPM',
     multiplier: '380x cheaper per impression',
     features: [
-      '10\u201325 store TakeOver',
+      '10–25 store TakeOver',
       'Full store colourway transformation',
       'Co-branded packaging run',
       '2 co-branded menu items',
@@ -54,16 +54,16 @@ const tiers = [
   },
   {
     name: 'National TakeOver',
-    stores: '25\u2013100 Stores',
-    priceRange: 'R3,000,000 \u2013 R8,000,000',
+    stores: '25–100 Stores',
+    priceRange: 'R3,000,000 – R8,000,000',
     perSlot: 'per TakeOver (3-month window)',
     cpm: 'R0.32',
-    impressions: '3.75M\u201315M',
+    impressions: '3.75M–15M',
     attention: '15-20 min avg',
     compare: 'National TV campaign = R300-500 CPM',
     multiplier: '937x cheaper per impression',
     features: [
-      '25\u2013100 store TakeOver',
+      '25–100 store TakeOver',
       'Full store colourway transformation',
       'Co-branded packaging run',
       '3 co-branded menu items',
@@ -83,7 +83,7 @@ const escalation = [
   { year: 'Year 1', avg: 'R583K', total: 'R3.5M', stores: '10' },
   { year: 'Year 2', avg: 'R1.5M', total: 'R9M', stores: '25' },
   { year: 'Year 3', avg: 'R2.8M', total: 'R16.8M', stores: '40' },
-  { year: 'Year 5', avg: 'R8M', total: 'R48M', stores: '65\u2013100' },
+  { year: 'Year 5', avg: 'R8M', total: 'R48M', stores: '65–100' },
 ];
 
 export default function PackagesPricingPage() {
@@ -120,7 +120,7 @@ export default function PackagesPricingPage() {
               <Crown size={16} className="text-gold" />
               <span className="text-gold font-semibold">Founding Partner Programme</span>
             </div>
-            <span className="text-muted">Year 1 only. 3 spots. 15\u201320% discount + first refusal on Year 2.</span>
+            <span className="text-muted">Year 1 only. 3 spots. 15–20% discount + first refusal on Year 2.</span>
           </motion.div>
         </div>
       </section>

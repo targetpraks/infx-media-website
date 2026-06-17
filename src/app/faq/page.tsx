@@ -8,7 +8,7 @@ import Link from 'next/link';
 const faqs = [
   {
     q: 'We already do billboard / radio / digital — why do we need this?',
-    a: 'You are paying for 1.5 seconds of attention. A billboard glance = 1.5s. A radio spot = 30s. A TakeOver = 5–20 minutes of dwell in your branded environment. You don\u2019t replace your media budget — you upgrade the bottom 15% into something that holds attention.',
+    a: 'You are paying for 1.5 seconds of attention. A billboard glance = 1.5s. A radio spot = 30s. A TakeOver = 5–20 minutes of dwell in your branded environment. You don’t replace your media budget — you upgrade the bottom 15% into something that holds attention.',
   },
   {
     q: 'R400K is a lot for a QSR takeover — how is this worth it?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'What happens when the TakeOver ends?',
-    a: 'Every physical change is modular: magnetic fascia, snap-in rails, LED programming. In 15 minutes we revert to the next brand\u2019s design. Zero construction. Zero paint. Zero permanent changes. Zero store downtime.',
+    a: 'Every physical change is modular: magnetic fascia, snap-in rails, LED programming. In 15 minutes we revert to the next brand’s design. Zero construction. Zero paint. Zero permanent changes. Zero store downtime.',
   },
   {
     q: 'Can our competitor also book a TakeOver?',
@@ -89,7 +89,7 @@ export default function FAQPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-8 text-center">
           <div className="card-premium rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Still Have Questions?</h3>
-            <p className="text-muted max-w-xl mx-auto mb-8">Book a 30-minute TakeOver briefing. We\u2019ll answer your questions and show you a custom mockup.</p>
+            <p className="text-muted max-w-xl mx-auto mb-8">Book a 30-minute TakeOver briefing. We’ll answer your questions and show you a custom mockup.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/book-briefing/" className="inline-flex items-center gap-2 bg-gold text-navy-dark px-8 py-4 rounded-full font-semibold text-lg hover:bg-gold-light transition glow-gold">
                 <ArrowRight size={18} />

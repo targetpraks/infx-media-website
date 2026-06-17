@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 interface YouTubeEmbedProps {
   videoId: string;
@@ -31,7 +31,7 @@ export default function YouTubeEmbed({
 }: YouTubeEmbedProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [playerReady, setPlayerReady] = useState(false);
+  const [, setPlayerReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(autoplay);
   const [isMuted, setIsMuted] = useState(true);
   const [showOverlayState, setShowOverlayState] = useState(showOverlay);

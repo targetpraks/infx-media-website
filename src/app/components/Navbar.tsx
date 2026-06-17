@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -82,7 +83,7 @@ export default function Navbar() {
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <nav className="flex items-center justify-between" aria-label="Main navigation">
-          <a
+          <Link
             href="/"
             className="flex items-center gap-2.5 group focus-visible:outline-2 focus-visible:outline-lime focus-visible:outline-offset-4 focus-visible:rounded-sm"
             aria-label="INFX TakeOver — Home"
@@ -95,7 +96,7 @@ export default function Navbar() {
             <span className="text-text-primary font-bold text-sm tracking-tight">
               INFX <span className="text-lime">TakeOver</span>
             </span>
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-1" role="navigation" aria-label="Section links">
             {navLinks.map((link) => {

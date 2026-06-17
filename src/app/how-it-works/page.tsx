@@ -179,7 +179,7 @@ export default function HowItWorksPage() {
               Every Surface. Every Touchpoint. <span className="gradient-gold-text">Every Moment.</span>
             </h2>
             <p className="text-muted max-w-2xl">
-              This isn\'t a sticker on a window. It\'s a complete sensory transformation. Your customer sees your brand, 
+              This isn’t a sticker on a window. It’s a complete sensory transformation. Your customer sees your brand,
               hears your brand, holds your brand, tastes your brand — and takes your brand home in their hand.
             </p>
           </motion.div>

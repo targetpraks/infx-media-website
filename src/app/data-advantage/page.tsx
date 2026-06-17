@@ -62,29 +62,29 @@ export default function DataAdvantagePage() {
                 <tbody className="text-sm">
                   <tr className="border-b border-white/5">
                     <td className="py-5 px-6">Gauteng Billboard</td>
-                    <td className="py-5 px-6 text-red-400">R180\u2013350</td>
+                    <td className="py-5 px-6 text-red-400">R180–350</td>
                     <td className="py-5 px-6 text-red-400">1.5 seconds</td>
                     <td className="py-5 px-6 text-red-400">0 names</td>
                     <td className="py-5 px-6 text-muted">Yes — billboard next to yours</td>
                   </tr>
                   <tr className="border-b border-white/5">
                     <td className="py-5 px-6">Radio (Gauteng, 3mo)</td>
-                    <td className="py-5 px-6 text-red-400">R120\u2013200</td>
+                    <td className="py-5 px-6 text-red-400">R120–200</td>
                     <td className="py-5 px-6 text-red-400">30 seconds</td>
                     <td className="py-5 px-6 text-red-400">0 names</td>
                     <td className="py-5 px-6 text-muted">Yes — next ad slot</td>
                   </tr>
                   <tr className="border-b border-white/5">
                     <td className="py-5 px-6">Digital Display</td>
-                    <td className="py-5 px-6 text-red-400">R40\u201380</td>
+                    <td className="py-5 px-6 text-red-400">R40–80</td>
                     <td className="py-5 px-6 text-red-400">0.7 seconds</td>
                     <td className="py-5 px-6 text-red-400">0 PII (cookies only)</td>
                     <td className="py-5 px-6 text-muted">Yes — same platform</td>
                   </tr>
                   <tr className="bg-emerald-500/5 border-b border-gold/20">
                     <td className="py-5 px-6 font-bold text-gold">Papa Pasta TakeOver</td>
-                    <td className="py-5 px-6 font-bold text-emerald-400">\u003cR1.00</td>
-                    <td className="py-5 px-6 font-bold text-emerald-400">5\u201320 minutes</td>
+                    <td className="py-5 px-6 font-bold text-emerald-400">&lt;R1.00</td>
+                    <td className="py-5 px-6 font-bold text-emerald-400">5–20 minutes</td>
                     <td className="py-5 px-6 font-bold text-emerald-400">Names + emails + phones + AR</td>
                     <td className="py-5 px-6 font-bold text-emerald-400">NO. Category locked.</td>
                   </tr>

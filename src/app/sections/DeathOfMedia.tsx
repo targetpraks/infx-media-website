@@ -33,15 +33,6 @@ const deadMedia = [
   },
 ];
 
-const cardStagger = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
-
 export default function DeathOfMedia() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });

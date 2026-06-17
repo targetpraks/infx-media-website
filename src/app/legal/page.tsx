@@ -29,7 +29,7 @@ export default function LegalPage() {
 
         <section>
           <h2 className="text-lg font-bold text-foreground mb-3">TakeOver Terms</h2>
-          <p className="mb-4">Submitting "Book a TakeOver Briefing" does not constitute a binding reservation. A confirmed TakeOver requires a signed contract, deposit, and category exclusivity confirmation.</p>
+          <p className="mb-4">Submitting “Book a TakeOver Briefing” does not constitute a binding reservation. A confirmed TakeOver requires a signed contract, deposit, and category exclusivity confirmation.</p>
         </section>
 
         <section>

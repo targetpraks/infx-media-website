@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { ArrowRight, CheckCircle, Loader2 } from 'lucide-react';
 
 type FormErrors = {
@@ -20,6 +19,7 @@ export default function BookBriefingPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [leadId, setLeadId] = useState('');
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '', company: '', title: '',
     category: '', tier: '', budget: '', brandVision: '', consent: false, honeypot: '',
@@ -93,6 +93,7 @@ export default function BookBriefingPage() {
         throw new Error(data.message || 'Submission failed. Please try again.');
       }
 
+      setLeadId(`INFX-${Math.random().toString(36).substring(2, 10).toUpperCase()}`);
       setSubmitted(true);
     } catch (err) {
       setErrors({ submit: err instanceof Error ? err.message : 'Something went wrong. Please try again.' });
@@ -109,8 +110,8 @@ export default function BookBriefingPage() {
             <CheckCircle size={40} className="text-emerald-400" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-3">Briefing Request Received</h2>
-          <p className="text-muted mb-8">We\u2019ll contact you within 4 business hours. Watch your inbox for a TakeOver deck and 6-slot calendar.</p>
-          <p className="text-gold text-sm">Lead ID: INFX-{Math.random().toString(36).substring(2, 10).toUpperCase()}</p>
+          <p className="text-muted mb-8">We’ll contact you within 4 business hours. Watch your inbox for a TakeOver deck and 6-slot calendar.</p>
+          <p className="text-gold text-sm">Lead ID: {leadId}</p>
         </div>
       </section>
     );
@@ -123,7 +124,7 @@ export default function BookBriefingPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <p className="text-gold text-sm font-semibold uppercase tracking-wider mb-3">Book a TakeOver Briefing</p>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Book Your TakeOver Briefing</h1>
-            <p className="text-muted mb-8">Fill in your details and we\u2019ll schedule a 30-minute TakeOver briefing for your team.</p>
+            <p className="text-muted mb-8">Fill in your details and we’ll schedule a 30-minute TakeOver briefing for your team.</p>
           </motion.div>
 
           <motion.form

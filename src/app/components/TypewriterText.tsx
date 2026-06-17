@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, type ElementType } from "react";
 
 interface TypewriterTextProps {
   text: string;
@@ -26,13 +26,15 @@ export default function TypewriterText({
   const indexRef = useRef(0);
 
   const startTyping = useCallback(() => {
-    indexRef.current = 0;
-    setDisplayed("");
-    setDone(false);
-
     if (intervalRef.current) clearInterval(intervalRef.current);
+    indexRef.current = 0;
+    let initialized = false;
 
     intervalRef.current = setInterval(() => {
+      if (!initialized) {
+        initialized = true;
+        setDone(false);
+      }
       indexRef.current++;
       const slice = text.slice(0, indexRef.current);
       setDisplayed(slice);
@@ -72,8 +74,10 @@ export default function TypewriterText({
     };
   }, [startTyping, triggerOnView]);
 
+  const Component = Tag as ElementType;
+
   return (
-    <Tag ref={ref as any} className={`font-mono ${className}`}>
+    <Component ref={ref} className={`font-mono ${className}`}>
       {displayed}
       {!done && (
         <span
@@ -81,6 +85,6 @@ export default function TypewriterText({
           style={{ backgroundColor: cursorColor }}
         />
       )}
-    </Tag>
+    </Component>
   );
 }

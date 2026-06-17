@@ -54,8 +54,6 @@ export default function EsportsArena() {
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
         const t = c / (cols - 1); // 0 to 1 across
-        // Curve: more packed at center, spread at edges
-        const curve = Math.sin(t * Math.PI);
         const x = w * 0.05 + t * w * 0.9;
         const baseY = h * 0.3 + r * 20;
         const y = baseY + Math.sin(t * Math.PI) * 30;

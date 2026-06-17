@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Clock, MapPin, Layers, Rocket } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
 
 const steps = [
   { time: "18:00", title: "Call Received", detail: "Brand brief confirmed. Creative asset lock begins." },

@@ -17,7 +17,7 @@ export default function BrandInfectionSimulator() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const [active, setActive] = useState(true);
+  const [active] = useState(true);
   const [infectedCount, setInfectedCount] = useState(0);
   const [totalCells] = useState(400); // 20x20 grid
   const cellsRef = useRef<InfectedCell[]>([]);
@@ -45,7 +45,7 @@ export default function BrandInfectionSimulator() {
     if (!container) return;
 
     let w = container.offsetWidth;
-    let h = 500;
+    const h = 500;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const resize = () => {
